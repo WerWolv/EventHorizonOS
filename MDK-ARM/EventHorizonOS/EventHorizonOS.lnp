@@ -49,9 +49,7 @@
 "eventhorizonos\usb.o"
 "eventhorizonos\news.o"
 "eventhorizonos\app.o"
---library_type=microlib
---feedback "EventHorizonOS\EventHorizonOS.fed" --feedback_image=none
---strict --scatter "EventHorizonOS\EventHorizonOS.sct"
+--library_type=microlib --strict --scatter "EventHorizonOS\EventHorizonOS.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "EventHorizonOS.map" -o EventHorizonOS\EventHorizonOS.axf

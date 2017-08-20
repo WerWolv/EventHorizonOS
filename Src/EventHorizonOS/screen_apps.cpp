@@ -14,7 +14,7 @@ ScreenApps::ScreenApps(const char* title) : Screen(title) {
 	m_runningApp = -1;
 }
 
-void ScreenApps::installApp(App &app) {
+void ScreenApps::installApp(App &app) {	
 	if(std::find(this->m_installedAppIDs.begin(), this->m_installedAppIDs.end(), app.getAppID()) == this->m_installedAppIDs.end())
 		this->m_installedAppIDs.push_back(app.getAppID());
 	

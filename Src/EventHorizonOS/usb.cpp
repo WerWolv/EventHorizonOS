@@ -62,20 +62,20 @@ void USB::onUSBDataReceived(uint8_t *data, uint32_t *length) {
 		initialized = true;
 	else if(tokens[0].find("App") != std::string::npos) {
 		
-		uint8_t index = 0xFF;
+		uint8_t index = 0x00;
 		uint8_t infos[4][40];
 		uint8_t dat[512];
-		uint8_t characterIndex = 0;
+		uint16_t characterIndex = 0;
 
-		for(uint16_t c = 0; c < *length; c++) {
-			if(data[c] == '|') {
+		for(uint16_t c = 4; c < *length; c++) {
+			if(data[c] == '|' && index != 4) {
 				characterIndex = 0;
 				index++;
 				continue;
 			}
-			if(index != 4)
+			if(index < 4 && characterIndex < 40 && c < *length)
 				infos[index][characterIndex] = data[c];
-			else
+			else if(characterIndex < 512 && c < *length)
 				dat[characterIndex] = data[c];
 			
 			characterIndex++;
@@ -85,9 +85,6 @@ void USB::onUSBDataReceived(uint8_t *data, uint32_t *length) {
 					
 		App *app = new App(std::string((const char*)&infos[2][0]), std::string((const char*)&infos[3][0]), icon, dat, (infos[1][0] << 8) | infos[1][1]);
 		installApp(*app);
-		
-		std::memset(dat, 0, 512);
-		std::memset(infos, 0, 4 * 40);
 	}
 	else if(tokens[0].find("Var") != std::string::npos) {
 		uint8_t data[3][40];
