@@ -1,0 +1,12 @@
+#ifndef __NOTIFICATION_H
+#define __NOTIFICATION_H
+
+class Notification {
+	public:
+		Notification(const char* title, const char* description, bool icon[8][8]);
+	
+	private:
+		const char *title, *description;
+};
+
+#endif

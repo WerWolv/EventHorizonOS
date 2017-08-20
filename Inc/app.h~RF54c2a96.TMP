@@ -1,0 +1,21 @@
+#ifndef __APP_H
+#define __APP_H
+
+#include <string>
+
+#include "event_horizon.h"
+#include "renderer.h"
+
+class App {
+	public:
+		App(std::string name, std::string app_id, uint8_t icon[8][8], uint8_t drawData[], size_t length);
+	
+		void render(Renderer renderer);
+	
+	private:
+		std::string m_name, m_app_id;
+		uint8_t m_drawData[512];
+		uint8_t m_icon[8][8];
+};
+
+#endif

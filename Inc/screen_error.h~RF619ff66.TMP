@@ -1,0 +1,15 @@
+#ifndef __SCREEN_ERROR_H
+#define __SCREEN_ERROR_H
+
+#include "screen.h"
+
+
+class ScreenError : public Screen {
+	public:
+		ScreenError();
+		ScreenError(const char* title);
+	
+		virtual void render(void);	
+};
+
+#endif

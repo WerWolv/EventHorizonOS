@@ -1,0 +1,22 @@
+#ifndef __USB_H
+#define __USB_H
+
+#include "event_horizon.h"
+
+#include <string>
+#include <vector>
+#include <cstdlib>
+
+#include "notification.h"
+#include "screen.h"
+#include "app.h"
+
+//[][]
+class USB {
+	public:
+		static USB INSTANCE;
+	
+		void onUSBDataReceived(uint8_t *data, uint32_t *length);
+};
+
+#endif

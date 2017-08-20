@@ -1,0 +1,22 @@
+#ifndef __NOTIFICATION_H
+#define __NOTIFICATION_H
+
+extern "C" {
+	#include "stm32f4xx_hal.h"
+}
+
+class Notification {
+	public:	
+		Notification(const char* title, const char* description, const char* shortForm, uint32_t color);
+	
+		const char* getTitle(void);
+		const char* getDescription(void);
+		const char* getShortForm(void);
+		uint32_t getColor(void);
+
+		const char *m_title, *m_description, *m_shortForm;
+		uint32_t m_color;
+	
+};
+
+#endif
